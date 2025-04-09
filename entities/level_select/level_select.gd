@@ -5,10 +5,13 @@ extends Area2D
 
 @onready var can_load_level : bool = false
 
+@export var display_name: String = ""
+
 func _ready() -> void:
 	level_label.hide()
+	level_label.text = display_name
 	
-	
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and can_load_level:
 		get_tree().change_scene_to_packed(level_to_load)

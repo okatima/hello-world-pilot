@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxdpynv56474q"]
+
+[ext_resource type="Script" uid="uid://bmscfbpj2yjnc" path="res://entities/level_select/level_select.gd" id="1_u8kju"]
+[ext_resource type="Texture2D" uid="uid://dcgp1pyaip2af" path="res://stages/tilesets/monochrome_tilemap_transparent_packed.png" id="3_10sdy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kfq03"]
+
+[node name="LevelSelect" type="Area2D"]
+script = ExtResource("1_u8kju")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kfq03")
+debug_color = Color(0.892756, 0.317242, 0.143786, 0.42)
+
+[node name="SignSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_10sdy")
+region_enabled = true
+region_rect = Rect2(256, 48, 16, 16)
+
+[node name="GroundSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 6)
+texture = ExtResource("3_10sdy")
+region_enabled = true
+region_rect = Rect2(48, 168, 16, 8)
+
+[node name="LevelLabel" type="Label" parent="."]
+offset_left = -30.0
+offset_top = -29.0
+offset_right = 33.0
+offset_bottom = -6.0
+theme_override_font_sizes/font_size = 12
+text = "Level 01"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

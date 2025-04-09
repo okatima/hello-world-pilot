@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0uwwggu0loj"]
+
+[ext_resource type="Script" path="res://entities/coin/coin.gd" id="1_0t63x"]
+[ext_resource type="Texture2D" uid="uid://dcgp1pyaip2af" path="res://stages/tilesets/monochrome_tilemap_transparent_packed.png" id="2_v7riw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_feb5d"]
+radius = 5.0
+
+[node name="Coin" type="Node2D"]
+script = ExtResource("1_0t63x")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_v7riw")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="StaticBody2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_feb5d")
+
+[connection signal="body_entered" from="StaticBody2D" to="." method="_on_static_body_2d_body_entered"]

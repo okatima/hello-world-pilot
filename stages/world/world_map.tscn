@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://bjteeedvw5xw5"]
+
+[ext_resource type="Script" uid="uid://h8rux1npgfe2" path="res://entities/world_map_player/world_map_player.gd" id="1_gh6wd"]
+[ext_resource type="Texture2D" uid="uid://dcgp1pyaip2af" path="res://stages/tilesets/monochrome_tilemap_transparent_packed.png" id="2_fhdmw"]
+[ext_resource type="Script" uid="uid://bmscfbpj2yjnc" path="res://entities/level_select/level_select.gd" id="3_fhdmw"]
+[ext_resource type="PackedScene" uid="uid://bsbsoef0y3in" path="res://stages/roger/game.tscn" id="4_ty1o8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ty1o8"]
+radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfq03"]
+atlas = ExtResource("2_fhdmw")
+region = Rect2(96, 192, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g7xl0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfq03")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kfq03"]
+
+[node name="WorldMap" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+limit_left = 0
+limit_top = 0
+limit_right = 600
+limit_bottom = 600
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(122, 67)
+motion_mode = 1
+script = ExtResource("1_gh6wd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_ty1o8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_g7xl0")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(38, 73)
+script = ExtResource("3_fhdmw")
+level_to_load = ExtResource("4_ty1o8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_kfq03")
+debug_color = Color(0.892756, 0.317242, 0.143786, 0.42)
+
+[node name="SignSprite" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("2_fhdmw")
+region_enabled = true
+region_rect = Rect2(256, 48, 16, 16)
+
+[node name="GroundSprite" type="Sprite2D" parent="Area2D"]
+position = Vector2(0, 6)
+texture = ExtResource("2_fhdmw")
+region_enabled = true
+region_rect = Rect2(48, 168, 16, 8)
+
+[node name="LevelLabel" type="Label" parent="Area2D"]
+offset_left = -30.0
+offset_top = -29.0
+offset_right = 33.0
+offset_bottom = -6.0
+theme_override_font_sizes/font_size = 12
+text = "Level 01"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

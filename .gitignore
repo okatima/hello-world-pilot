@@ -1,10 +1,10 @@
-# Godot 4+ specific ignores
-.godot/
 
 # Godot-specific ignores
+.godot/
 .import/
 export.cfg
 export_credentials.cfg
+/android/
 
 # Imported translations (automatically generated from CSV files)
 *.translation

@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://bjteeedvw5xw5"]
+[gd_scene load_steps=11 format=4 uid="uid://bjteeedvw5xw5"]
 
 [ext_resource type="Script" uid="uid://h8rux1npgfe2" path="res://entities/world_map_player/world_map_player.gd" id="1_gh6wd"]
 [ext_resource type="TileSet" uid="uid://bdm11ufbg6q32" path="res://stages/tilesets/world_map_tileset.tres" id="1_kfq03"]
 [ext_resource type="Texture2D" uid="uid://dcgp1pyaip2af" path="res://stages/tilesets/monochrome_tilemap_transparent_packed.png" id="2_fhdmw"]
 [ext_resource type="PackedScene" uid="uid://cxdpynv56474q" path="res://entities/level_select/level_select.tscn" id="3_ty1o8"]
 [ext_resource type="PackedScene" uid="uid://bsbsoef0y3in" path="res://stages/roger/game.tscn" id="4_ty1o8"]
+[ext_resource type="PackedScene" uid="uid://clcxjey120o6a" path="res://stages/Edwin/game.tscn" id="6_g7xl0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kfq03"]
 normal = Vector2(0, 1)
@@ -80,3 +81,8 @@ position_smoothing_enabled = true
 position = Vector2(40, 112)
 level_to_load = ExtResource("4_ty1o8")
 display_name = "Mountain Climb"
+
+[node name="LevelEdwin" parent="." instance=ExtResource("3_ty1o8")]
+position = Vector2(176, 112)
+level_to_load = ExtResource("6_g7xl0")
+display_name = "Edwin"

@@ -28,5 +28,5 @@ Nu kan du i Godot importera projektet som du har kopierat.
 
 När du jobbar i projektet, gör en egen mapp under "stages" med ditt namn. Och när du jobbat klart för dagen:
 1. I Git For Desktop: skriva en sammanfattning i rutan nere till vänster.
-2. Tryck på "Commit to <ditt-namn>"
+2. Tryck på "Commit to _ditt-namn_"
 3. Tryck på "Push Origin" i mitten av skärmen.

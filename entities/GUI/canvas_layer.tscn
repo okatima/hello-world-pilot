@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://de1bjippcpsnk"]
+
+[ext_resource type="Script" uid="uid://bra5mwgl5g7tb" path="res://entities/GUI/canvas_layer.gd" id="1_xw3sp"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_xw3sp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 68.0
+offset_bottom = 23.0
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Coins"
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "X"

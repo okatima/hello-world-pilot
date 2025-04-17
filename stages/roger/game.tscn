@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cxi0goasaw68y" path="res://entities/killzone/killzone.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://ca38p78f23h34" path="res://entities/bat/bat.tscn" id="5_u3w7f"]
 [ext_resource type="PackedScene" uid="uid://b5xaddbnr3n4r" path="res://entities/brain_monster/brain_monster.tscn" id="6_mpuum"]
+[ext_resource type="PackedScene" uid="uid://de1bjippcpsnk" path="res://entities/GUI/canvas_layer.tscn" id="7_5uo5g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2o6t"]
 texture = ExtResource("1_80nbo")
@@ -530,11 +531,8 @@ _data = {
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fc0e3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jktm"]
-size = Vector2(46.609, 8.51997)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fc0e3"]
-size = Vector2(20, 8)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpuum"]
+size = Vector2(15, 11)
 
 [node name="Game" type="Node2D"]
 
@@ -607,10 +605,6 @@ shape = SubResource("WorldBoundaryShape2D_fc0e3")
 [node name="Killzone2" parent="." instance=ExtResource("4_fc0e3")]
 position = Vector2(363.391, 54.52)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone2"]
-position = Vector2(13.3045, 5.74002)
-shape = SubResource("RectangleShape2D_7jktm")
-
 [node name="Spikes" type="Sprite2D" parent="."]
 position = Vector2(40, 24)
 texture = ExtResource("1_80nbo")
@@ -620,11 +614,8 @@ region_rect = Rect2(48, 144, 16, 16)
 [node name="Killzone" parent="Spikes" instance=ExtResource("4_fc0e3")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Killzone"]
-position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_fc0e3")
-
-[node name="Bat" parent="." instance=ExtResource("5_u3w7f")]
-position = Vector2(-68.7205, 46.8145)
+position = Vector2(-0.5, 4.5)
+shape = SubResource("RectangleShape2D_mpuum")
 
 [node name="Bat2" parent="." instance=ExtResource("5_u3w7f")]
 position = Vector2(-144, 46.8145)
@@ -652,3 +643,11 @@ position = Vector2(840, -96)
 
 [node name="Coin8" parent="." instance=ExtResource("3_feb5d")]
 position = Vector2(736, -80)
+
+[node name="Killzone4" parent="." instance=ExtResource("4_fc0e3")]
+position = Vector2(-69, 48)
+
+[node name="Bat" parent="." instance=ExtResource("5_u3w7f")]
+position = Vector2(-61, 47)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("7_5uo5g")]

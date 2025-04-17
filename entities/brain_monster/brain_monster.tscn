@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5xaddbnr3n4r"]
+[gd_scene load_steps=8 format=3 uid="uid://b5xaddbnr3n4r"]
 
 [ext_resource type="Script" uid="uid://46sr5mgteiyk" path="res://entities/brain_monster/brain_monster.gd" id="1_mw0sf"]
 [ext_resource type="Texture2D" uid="uid://dcgp1pyaip2af" path="res://stages/tilesets/monochrome_tilemap_transparent_packed.png" id="1_sa5oq"]
+[ext_resource type="PackedScene" uid="uid://cxi0goasaw68y" path="res://entities/killzone/killzone.tscn" id="3_rwrj5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mw0sf"]
 atlas = ExtResource("1_sa5oq")
@@ -39,3 +40,6 @@ script = ExtResource("1_mw0sf")
 sprite_frames = SubResource("SpriteFrames_b6s8p")
 autoplay = "default"
 frame_progress = 0.600198
+
+[node name="Killzone" parent="." instance=ExtResource("3_rwrj5")]
+position = Vector2(0, 2)

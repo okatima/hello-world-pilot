@@ -1,6 +1,9 @@
 extends Node2D
 
 
+signal coin_collected
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("I am a coin")
@@ -12,4 +15,5 @@ func _process(delta: float) -> void:
 
 func _on_static_body_2d_body_entered(body: Node2D) -> void:
 	print("+1 coin")
+	coin_collected.emit()
 	queue_free()

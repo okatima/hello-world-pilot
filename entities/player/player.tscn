@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://f1bbu6yqu6i2"]
+[gd_scene load_steps=12 format=3 uid="uid://f1bbu6yqu6i2"]
 
 [ext_resource type="Script" uid="uid://d2jghtwvpvuu" path="res://entities/player/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dcgp1pyaip2af" path="res://stages/tilesets/monochrome_tilemap_transparent_packed.png" id="2_i3pqv"]
@@ -6,6 +6,26 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_e2o6t"]
 atlas = ExtResource("2_i3pqv")
 region = Rect2(0, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkugw"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(64, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fjmc"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(80, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abrql"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(32, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sglur"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(16, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bls4j"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(48, 208, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_feb5d"]
 animations = [{
@@ -21,10 +41,41 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkugw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fjmc")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abrql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sglur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bls4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sglur")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2o6t"]
 radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_abrql"]
+radius = 8.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -32,9 +83,11 @@ script = ExtResource("1_onrkg")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_feb5d")
-animation = &"idle"
+animation = &"run"
+frame_progress = 0.737379
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_e2o6t")
 
@@ -42,3 +95,14 @@ shape = SubResource("CircleShape2D_e2o6t")
 zoom = Vector2(5, 5)
 limit_bottom = 96
 position_smoothing_enabled = true
+
+[node name="Climb" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Climb"]
+shape = SubResource("CircleShape2D_abrql")
+debug_color = Color(0.693327, 0.496164, 0, 0.42)
+
+[connection signal="area_entered" from="Climb" to="." method="_on_climb_area_entered"]
+[connection signal="area_exited" from="Climb" to="." method="_on_climb_area_exited"]

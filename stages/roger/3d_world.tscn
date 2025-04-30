@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwlm1actkivll"]
+
+[ext_resource type="Script" uid="uid://c6gatt7ik8och" path="res://stages/roger/player.gd" id="1_ii0b2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v6523"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_ii0b2"]
+sky_material = SubResource("ProceduralSkyMaterial_v6523")
+
+[sub_resource type="Environment" id="Environment_6em5w"]
+background_mode = 2
+sky = SubResource("Sky_ii0b2")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6523"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ii0b2"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6em5w")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(20, 1, 20)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72408, 0)
+script = ExtResource("1_ii0b2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_v6523")
+debug_color = Color(0.913725, 0.0117647, 0.717647, 0.976471)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_ii0b2")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03498, 0.885167, 1.91408)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 0, 2.57399, -4.37854)
+use_collision = true
+size = Vector3(1, 4.72852, 4)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGBox3D2"]
+transform = Transform3D(-1.77186e-07, -1, -8.78313e-08, 4.05355, -4.37114e-08, 8.78313e-08, -1.20805e-07, -2.98023e-08, 2.94713, 0, -1.06578, 0)
+operation = 2
+sides = 32
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21902, 1.2877)
+operation = 2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.69415, 1.78794, -3.27708)
+light_color = Color(0.998369, 0.469069, 0.0651482, 1)
+omni_range = 2.5
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79318, 1.78794, -3.65322)
+light_color = Color(0.472187, 0.417823, 0.820936, 1)
+omni_range = 2.5

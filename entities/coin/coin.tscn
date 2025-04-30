@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://d0uwwggu0loj"]
 
-[ext_resource type="Script" path="res://entities/coin/coin.gd" id="1_0t63x"]
+[ext_resource type="Script" uid="uid://bfpypxema2mma" path="res://entities/coin/coin.gd" id="1_0t63x"]
 [ext_resource type="Texture2D" uid="uid://dcgp1pyaip2af" path="res://stages/tilesets/monochrome_tilemap_transparent_packed.png" id="2_v7riw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_feb5d"]
 radius = 5.0
 
-[node name="Coin" type="Node2D"]
+[node name="Coin" type="Node2D" groups=["coins"]]
 script = ExtResource("1_0t63x")
 
 [node name="Sprite" type="Sprite2D" parent="."]
